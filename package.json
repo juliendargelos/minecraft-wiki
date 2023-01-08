@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "fetch": "node scripts/fetch.js",
+    "start": "serve dist"
+  },
+  "devDependencies": {
+    "big-json": "^3.2.0",
+    "duration-estimator": "^0.1.4",
+    "ejs": "^3.1.8",
+    "serve": "^14.1.2",
+    "wikijs": "^6.4.0"
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.0",
+    "node-fetch": "^2.0.0"
+  }
+}

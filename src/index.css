@@ -1,0 +1,152 @@
+img.lazyload, img.lazyloading {
+  opacity: 1;
+}
+
+.animated > *:not(.animated-active) {
+  display: none;
+}
+
+.hlist li, .hlist li ul {
+  display: inline-block;
+}
+
+.hlist li ul::before {
+  content: '(';
+}
+
+.hlist li ul::after {
+  content: ')';
+}
+
+.invslot {
+  box-sizing: content-box;
+}
+
+.msgbox {
+  max-width: none !important;
+}
+
+.hatnote {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+header, main, footer {
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 30px;
+  margin:  30px auto;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  margin-left: auto;
+  width: 300px;
+  position: relative;
+}
+
+.search input {
+  width: 100%;
+  appearance: none;
+  margin: 0;
+  padding: 7px 10px;
+  box-sizing: border-box;
+  display: block;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.search ul {
+  background-color: #fff;
+  position: absolute;
+  width: 100%;
+  margin-top: 7px;
+  top: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  list-style: none;
+  display: none;
+  z-index: 1000;
+}
+
+.search li a {
+  display: flex;
+  align-items: center;
+}
+
+.search li img {
+  object-fit: contain;
+  margin-right: 7px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.search li img.hidden {
+  opacity: 0;
+}
+
+.search li:not(:last-child) {
+  border-bottom: 1px solid #ddd;
+}
+
+.search li.selected {
+  background-color: #eee;
+  text-decoration: underline;
+}
+
+.search a {
+  padding: 7px 10px;
+  display: block;
+}
+
+.search:focus-within ul, .search ul:hover {
+  display: block;
+}
+
+.search [hidden] {
+  display: none !important;
+}
+
+.index {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.index-item {
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.index-item img {
+  margin-right: 10px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.mw-parser-output h2,
+.mw-parser-output h3,
+.mw-parser-output h4,
+.mw-parser-output h5,
+.mw-parser-output h6 {
+  margin-top: 20px;
+}
+
+.attribution {
+  margin-top: 30px;
+}
+
+.attribution a {
+  text-decoration: underline;
+}
