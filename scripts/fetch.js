@@ -60,7 +60,7 @@ const STYLESHEET_URLS = [
     cached.path = `/${page.fullurl.replace(WIKI_URL_PATTERN, '')}`
   }
 
-  // pool.splice(5000)
+  pool.splice(5000)
 
   console.log('Fetching pages content...')
 
