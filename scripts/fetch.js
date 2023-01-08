@@ -81,13 +81,13 @@ const STYLESHEET_URLS = [
     const cached = cache.pages[page.pageid]
 
     try {
-      const result = await api.api({
+      let result = await api.api({
         action: 'parse',
         prop: 'text',
         pageid: page.pageid
       })
 
-      const content  = resolvePaths(result.parse.text['*'], cache.assets)
+      let content = resolvePaths(result.parse.text['*'], cache.assets)
 
       await fs.writeFile(`${CACHE_PATH}/pages/${page.pageid}.html`, content)
       cached.touched = page.touched
@@ -99,6 +99,9 @@ const STYLESHEET_URLS = [
         `Fetched "${page.title}"`
       )
       // await fetchedPages % CACHE_SAVE_INTERVAL || saveCache(cache)
+
+      result = undefined
+      content = undefined
       await fetchPage()
     } catch (error) {
       console.error(error)
