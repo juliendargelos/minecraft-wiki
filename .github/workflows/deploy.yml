@@ -13,7 +13,7 @@ jobs:
         id: cache
         with:
           key: cache
-          path: cache
+          path: .cache
       - run: yarn
       - run: yarn fetch
       - run: yarn build
