@@ -9,15 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - id: time
-        uses: nanzm/get-time-action@v1.1
-        with:
-          format: 'YYYY-MM-DD-HH-mm-ss'
       - uses: actions/cache@v3
         id: cache
         with:
-          key: "${{ steps.time.outputs.time }}"
           path: .cache
+          key: cache-${{ github.run_id }}
+          restore-keys: |
+            cache
       - run: yarn
       - run: yarn fetch
       - run: yarn build
