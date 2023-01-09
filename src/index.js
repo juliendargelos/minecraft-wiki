@@ -1,29 +1,43 @@
 addEventListener('DOMContentLoaded', () => {
   ;(async () => {
-    const animations = [...document.querySelectorAll('.animated')].map(element => ({
-      items: [...element.children].filter(i => i.querySelector('img')),
-      index: 0
-    }))
+    const animations = [...document.querySelectorAll('.animated')]
+      .map(element => ({
+        items: [...element.children].filter(i => i.querySelector('img')),
+        index: 0
+      }))
+      .filter(({ items }) => items.length > 1)
 
-    await Promise.all(animations.reduce((promises, animation) => {
-      for (const item of animation.items) {
-        const image = item.querySelector('img')
-        image.loading = 'eager'
-        image.complete || promises.push(new Promise((resolve) => {
+    const loadedAnimations = []
+
+    for (const animation of animations) {
+      Promise
+        .all(animation.items.map((item, i) => new Promise((resolve) => {
+          const image = item.querySelector('img')
+          image.setAttribute('alt', '')
+          item.style.opacity = i === 0 ? '1' : '0.1'
+
           const load = () => {
+            image.removeEventListener('load', load)
             resolve()
-            removeEventListener('load', load)
           }
 
-          image.addEventListener('load', load)
-        }))
-      }
+          if (image.complete) {
+            load()
+          } else {
+            image.addEventListener('load', load)
+          }
+        })))
+        .then(() => setTimeout(() => {
+          for (const item of animation.items) {
+            item.style.opacity = ''
+          }
 
-      return promises
-    }, []))
+          loadedAnimations.push(animation)
+        }, 200))
+    }
 
     setInterval(() => {
-      for (const animation of animations) {
+      for (const animation of loadedAnimations) {
         animation.items[animation.index].classList.remove('animated-active')
         animation.index = (animation.index + 1) % animation.items.length
         animation.items[animation.index].classList.add('animated-active')

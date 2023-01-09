@@ -55,10 +55,12 @@ const {
         return
       }
 
-      await fs.ensureDir(`${OUTPUT_PATH}${page.path}`)
+      const  path = decodeURI(page.path)
+
+      await fs.ensureDir(`${OUTPUT_PATH}${path}`)
 
       await fs.writeFile(
-        `${OUTPUT_PATH}${page.path}/index.html`,
+        `${OUTPUT_PATH}${path}/index.html`,
         render(pageTemplate, layoutTemplate, { stylesheets, page: {
           ...page,
           content: transform(content)
@@ -79,7 +81,7 @@ const {
     ),
     fs.writeJSON(`${OUTPUT_PATH}/index.json`, pages.map(([_, page]) => ({
       title: page.title,
-      path: page.path,
+      path: encodeURI(page.path).replace(/^\/\/+/, '/'),
       image: page.image
     })))
   ])

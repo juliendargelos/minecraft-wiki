@@ -2,16 +2,8 @@ img.lazyload, img.lazyloading {
   opacity: 1;
 }
 
-img {
-  image-rendering: pixelated;
-}
-
 .animated {
   position: relative;
-}
-
-.animated > * {
-  animation: animated 1s steps(2, end);
 }
 
 .animated > *:not(.animated-active) {
@@ -20,7 +12,7 @@ img {
   position: absolute;
   pointer-events: none;
   touch-action: none;
-  z-index:  -1000;
+  z-index:  -1;
   opacity: 0;
 }
 
@@ -167,14 +159,4 @@ header {
 
 .attribution a {
   text-decoration: underline;
-}
-
-@keyframes animated {
-  from {
-    opacity: .01;
-  }
-
-  to {
-    opacity: 0;
-  }
 }
