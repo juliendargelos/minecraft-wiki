@@ -1,4 +1,4 @@
-# Minecraft Wiki
+# Minecraft wiki
 
 Snapshot of [minecraft.fandom.com](https://minecraft.fandom.com/wiki) wiki,
 generated using MediaWiki API. Contents are automatically updated using GitHub

@@ -2,6 +2,10 @@ img.lazyload, img.lazyloading {
   opacity: 1;
 }
 
+img {
+  image-rendering: pixelated;
+}
+
 .animated > *:not(.animated-active) {
   display: none;
 }
