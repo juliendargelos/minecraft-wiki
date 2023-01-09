@@ -145,7 +145,7 @@
     }
 
     suggestionsIndex = 0
-    suggestions.hidden = false
+    suggestions.hidden = suggestionItems[0].hidden
   }
 
   function keydown(event) {
