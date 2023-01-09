@@ -14,7 +14,7 @@ addEventListener('DOMContentLoaded', () => {
         .all(animation.items.map((item, i) => new Promise((resolve) => {
           const image = item.querySelector('img')
           image.setAttribute('alt', '')
-          item.style.opacity = i === 0 ? '1' : '0.1'
+          item.style.opacity = i === 0 ? '1' : '0.005'
 
           const load = () => {
             image.removeEventListener('load', load)
