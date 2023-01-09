@@ -1,5 +1,16 @@
 addEventListener('DOMContentLoaded', () => {
   ;(async () => {
+    const tables = [...document.querySelectorAll('.wikitable')]
+
+    for (const table of tables) {
+      const wrapper = document.createElement('div')
+      wrapper.className = 'table-wrapper'
+      table.parentNode.insertBefore(wrapper, table)
+      wrapper.appendChild(table)
+    }
+  })()
+
+  ;(async () => {
     const animations = [...document.querySelectorAll('.animated')]
       .map(element => ({
         items: [...element.children].filter(i => i.querySelector('img')),

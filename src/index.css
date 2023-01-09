@@ -53,15 +53,19 @@ header, main, footer {
 header {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .search {
-  margin-left: auto;
-  width: 300px;
+  width: 100%;
+  margin-top: 20px;
   position: relative;
+  flex-shrink: 0;
 }
 
 .search input {
+  background: transparent;
   width: 100%;
   appearance: none;
   margin: 0;
@@ -132,7 +136,7 @@ header {
 
 .index-item {
   border: 1px solid #ddd;
-  padding: 10px 15px;
+  padding: 6px 10px;
   border-radius: 4px;
   margin: 5px;
   display: flex;
@@ -154,10 +158,38 @@ header {
   margin-top: 20px;
 }
 
+.table-wrapper {
+  width: calc(100% + 60px);
+  margin: 0 -30px;
+  overflow: auto;
+  display:  flex;
+}
+
+.table-wrapper::before, .table-wrapper::after {
+  content: '';
+  width: 30px;
+  height: 1px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
 .attribution {
   margin-top: 30px;
 }
 
 .attribution a {
   text-decoration: underline;
+}
+
+@media screen and (min-width: 640px) {
+  .search {
+    margin-top: 0;
+    max-width: 300px;
+    flex-shrink: 1;
+    margin-left: 50px;
+  }
+
+  .index-item {
+    padding: 10px 15px;
+  }
 }
