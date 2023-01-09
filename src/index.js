@@ -1,25 +1,22 @@
 addEventListener('DOMContentLoaded', () => {
   ;(async () => {
     const animations = [...document.querySelectorAll('.animated')].map(element => ({
-      items: element.children,
+      items: [...element.children].filter(i => i.querySelector('img')),
       index: 0
     }))
 
     await Promise.all(animations.reduce((promises, animation) => {
       for (const item of animation.items) {
         const image = item.querySelector('img')
+        image.loading = 'eager'
+        image.complete || promises.push(new Promise((resolve) => {
+          const load = () => {
+            resolve()
+            removeEventListener('load', load)
+          }
 
-        if (image) {
-          image.loading = 'eager'
-          image.complete || promises.push(new Promise((resolve) => {
-            const load = () => {
-              resolve()
-              removeEventListener('load', load)
-            }
-
-            image.addEventListener('load', load)
-          }))
-        }
+          image.addEventListener('load', load)
+        }))
       }
 
       return promises

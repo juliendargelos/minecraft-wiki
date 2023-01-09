@@ -7,7 +7,11 @@ img {
 }
 
 .animated > *:not(.animated-active) {
-  display: none;
+  position: absolute;
+  pointer-events: none;
+  touch-action: none;
+  z-index:  -1000;
+  animation: animated .1s steps(2, end);
 }
 
 .hlist li, .hlist li ul {
@@ -153,4 +157,14 @@ header {
 
 .attribution a {
   text-decoration: underline;
+}
+
+@keyframes animated {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
