@@ -92,8 +92,8 @@ header {
   opacity: 0;
 }
 
-.search li:not(:last-child) {
-  border-bottom: 1px solid #ddd;
+.search li:not(:first-child) {
+  border-top: 1px solid #ddd;
 }
 
 .search li.selected {

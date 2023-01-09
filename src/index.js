@@ -14,7 +14,7 @@
 })()
 
 ;(async () => {
-  const count = 10
+  const count = 15
   const load = fetch('/index.json').then(r => r.json())
   let pages = null
 
@@ -122,7 +122,7 @@
 
     results
       .sort((a, b) => a.search.indexOf(query) - b.search.indexOf(query))
-      .splice(0, count)
+      .splice(count)
 
     for (i = 0; i < count; i++) {
       suggestionItem = suggestionItems[i]
